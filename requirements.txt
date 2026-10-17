@@ -1,0 +1,15 @@
+fastapi
+uvicorn[standard]
+streamlit
+requests
+pydantic-settings
+python-multipart
+sqlalchemy
+psycopg[binary]
+alembic
+numpy
+opencv-python-headless
+pandas
+openpyxl
+pytest
+ruff

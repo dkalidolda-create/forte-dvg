@@ -1,0 +1,3 @@
+# Apple Silicon ML experiment; keep separate from the API environment.
+mlx-vlm==0.7.8
+-r requirements-object.txt

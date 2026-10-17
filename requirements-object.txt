@@ -1,0 +1,3 @@
+# Optional local CPU feature extractor for banknote/document classification.
+onnxruntime==1.31.0
+python-dotenv==1.2.4

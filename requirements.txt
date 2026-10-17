@@ -13,3 +13,7 @@ pandas
 openpyxl
 pytest
 ruff
+python-dotenv
+
+# Used by FastAPI TestClient in backend tests.
+httpx

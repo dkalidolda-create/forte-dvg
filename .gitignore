@@ -13,3 +13,5 @@ __pycache__/
 data/
 artifacts/
 *.log
+.venv-ml/
+.venv-ml

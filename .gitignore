@@ -20,3 +20,6 @@ outputs/label-review/
 tmp/
 # Local submission handoff and temporary access information.
 outputs/submission/
+
+# Local presentation drafts.
+outputs/presentation/

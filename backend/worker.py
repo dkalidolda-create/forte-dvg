@@ -20,7 +20,8 @@ def execute(video_path, analyzer_path, output):
         log.exception('Video analysis failed')
         known = {'invalid_video', 'model_not_configured', 'invalid_model_output',
                  'event_outside_video', 'evidence_outside_video',
-                 'evidence_decode_failed', 'evidence_encode_failed'}
+                 'evidence_decode_failed', 'evidence_encode_failed', 'analysis_uncertain',
+                 'model_assets_missing', 'model_runtime_unavailable', 'analysis_timeout'}
         payload = {'error': str(exc) if str(exc) in known else 'analysis_failed'}
     Path(output).write_text(json.dumps(payload, ensure_ascii=False), encoding='utf-8')
 

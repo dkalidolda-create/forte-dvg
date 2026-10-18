@@ -1,4 +1,5 @@
 .venv/
+.venv-ml
 __pycache__/
 *.py[cod]
 .pytest_cache/
@@ -13,5 +14,9 @@ __pycache__/
 data/
 artifacts/
 *.log
-.venv-ml/
-.venv-ml
+
+# Private review data, extracted reference files and local build intermediates.
+outputs/label-review/
+tmp/
+# Local submission handoff and temporary access information.
+outputs/submission/

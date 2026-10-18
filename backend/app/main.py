@@ -10,6 +10,7 @@ from fastapi.security import APIKeyHeader
 from backend.app.adapters.database.jobs import JobStore
 from backend.app.config import Settings
 from backend.app.domain.schemas import AcceptedJob, JobResponse
+from backend.app.request_guard import APIRequestGuard
 
 
 def create_app(settings=None):
@@ -24,6 +25,8 @@ def create_app(settings=None):
         yield
 
     app = FastAPI(title='Forte Video Analysis API', version='0.2.0', lifespan=lifespan)
+    app.add_middleware(APIRequestGuard, api_key=settings.api_key,
+                       max_upload_bytes=settings.max_upload_bytes)
     header = APIKeyHeader(name='X-API-Key', auto_error=False)
 
     def authorize(key: Annotated[Optional[str], Depends(header)]):

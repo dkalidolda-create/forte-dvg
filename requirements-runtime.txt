@@ -1,0 +1,4 @@
+# Current CPU inference. MLX and a GPU are not required.
+-r requirements.txt
+onnxruntime==1.31.0
+Pillow==13.0.0

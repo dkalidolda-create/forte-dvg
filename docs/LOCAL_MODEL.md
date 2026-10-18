@@ -1,5 +1,8 @@
 # Локальный ML-baseline на Apple Silicon
 
+> **Архив экспериментов.** Этот документ описывает предыдущий этап разработки.
+> Текущая модель и актуальная оценка: [ML_RUNTIME.md](ML_RUNTIME.md).
+
 Экспериментальная модель: mlx-community/Qwen3-VL-2B-Instruct-4bit.
 Лицензия весов: Apache-2.0. Исходная модель: Qwen/Qwen3-VL-2B-Instruct.
 MLX-VLM распространяется под MIT и требует Python >=3.10.

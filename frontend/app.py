@@ -1,26 +1,25 @@
-import requests
-import streamlit as st
+"""Run the custom web interface: python -m frontend.app (http://127.0.0.1:8502)."""
+import os
 
-st.set_page_config(page_title="Video Analysis", layout="wide")
+import uvicorn
 
-st.title("Анализ видео")
-st.write("Загрузите видео для поиска нарушений.")
+from frontend.server import create_app
 
-try:
-    response = requests.get(
-        "http://127.0.0.1:8000/health",
-        timeout=3,
-    )
-    response.raise_for_status()
-    st.success("Backend подключён ✅")
-except requests.RequestException:
-    st.error("Backend недоступен. Проверьте его запуск.")
+app = create_app()
 
-video = st.file_uploader(
-    "Выберите видео",
-    type=["mp4", "mov"],
-)
-
-if video is not None:
-    st.write(f"Выбран файл: {video.name}")
-    st.info("Обработку видео подключим следующим шагом.")
+if __name__ == '__main__':
+    try:
+        from streamlit.runtime.scriptrunner import get_script_run_ctx
+        streamlit_context = get_script_run_ctx(suppress_warning=True)
+    except ImportError:
+        streamlit_context = None
+    if streamlit_context is not None:
+        import streamlit as st
+        st.set_page_config(page_title='Forte DVG', page_icon='✧')
+        st.title('Forte DVG')
+        st.write('Новый веб-интерфейс открывается отдельно.')
+        st.link_button('Открыть новый интерфейс ↗', 'http://127.0.0.1:8502')
+        st.caption('Если страница не открывается, выполните в новом терминале:')
+        st.code('python -m frontend.app', language='bash')
+    else:
+        uvicorn.run(app, host='127.0.0.1', port=int(os.getenv('FRONTEND_PORT', '8502')))
